@@ -1,0 +1,10 @@
+<textarea #text [rows]="5" [cols]="30" 
+  pInputTextarea autoResize="autoResize"
+  [(ngModel)]="textValue" 
+  (ngModelChange)="changed($event, text)"
+  (keypress)="keydown($event)"
+  style="position:absolute;width:90%;height:600px"></textarea>
+<span #faux style="display:none">{{ textValue }}</span>
+<span #lineFaux style="display:none">{{ currentLine }}</span>
+<div #suggBox [style.display]="!showAutocomplete ? 'none' : 'block'"
+  style="background-color:lightgray;width:340px;height:200px;position:absolute;"></div>
