@@ -6,6 +6,5 @@ export interface Post {
   content: string;
   createdAt: Date;
   author: Mongo.ObjectID;
-  likes: Array<Mongo.ObjectID>,
-  view: number
+  view: number;
 }

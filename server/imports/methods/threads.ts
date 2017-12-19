@@ -22,10 +22,10 @@ Meteor.methods({
         content: content,
         createdAt: new Date(),
         author: author,
-        likes: new Array<Mongo.ObjectID>(),
         view: 0
       },
       children: new Array<Post>(),
+      likes: new Array<Mongo.ObjectID>(),
       master: forum,
     });
 
@@ -55,7 +55,7 @@ Meteor.methods({
       _id: thread
     });
 
-    let isLikedBefore = t.root.likes.find((val, index, obj) => {
+    let isLikedBefore = t.likes.find((val, index, obj) => {
       return val.toHexString() === liker.toHexString();
     });
 
@@ -63,10 +63,8 @@ Meteor.methods({
       Threads.update({
         _id: thread
       }, {
-        root: {
-          $push: {
-            likes: liker
-          }
+        $push: {
+          likes: liker
         }
       });
     } else {

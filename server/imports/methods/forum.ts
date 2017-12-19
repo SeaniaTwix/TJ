@@ -41,15 +41,8 @@ Meteor.methods({
   },
 
   'forum.exists': (forum: Mongo.ObjectID) => {
-    let results = Forums.find({
-      _id: forum
-    });
+    let results = Forums.find({ _id: { $exists: true } });
 
-    let count = 0;
-    for (let forum of results.fetch()) {
-      count++;
-    }
-
-    return count > 0;
+    return results.fetch().length > 0;
   }
 });
