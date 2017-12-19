@@ -20,7 +20,7 @@ Meteor.methods({
           'author': author
         }
       }
-    })
+    });
   },
   'post.remove': (post: Mongo.ObjectID) => {
     Threads.update({
