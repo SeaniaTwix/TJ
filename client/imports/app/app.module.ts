@@ -13,7 +13,9 @@ import {
   ChipsModule,
   FileUploadModule,
   GrowlModule,
-  AutoCompleteModule
+  AutoCompleteModule,
+  CheckboxModule,
+  RadioButtonModule
 } from 'primeng/primeng';
 
 import { AppComponent } from './app.component';
@@ -28,6 +30,7 @@ import { ViewForumPage } from '../pages/forum/view/view-forum.component';
 import { ViewMessagePage } from '../pages/user/message/view/view-message.component';
 import { PostboxPage } from '../pages/user/postbox/postbox.component';
 import { NewMessagePage } from '../pages/user/message/new/new-message.component';
+import { ViewManagePanelPage } from './../pages/admin/panel/view/view-manage-panel.component';
 
 // Components
 import { ViewPostComponent } from '../components/posts/view/view-post.component';
@@ -44,8 +47,12 @@ import { ViewPostboxComponent } from '../components/message/postbox/view/view-po
 import { NewMessageComponent } from '../components/message/postbox/new/new-message.component';
 import { NotifierComponent } from '../components/notification/notifier/notifier.component';
 import { ViewEditorComponent } from '../components/editor/view/view-editor.component';
+import { ListMessagesComponent } from './../components/message/postbox/list/list-messages.component';
 import { SuggestionBoxComponent } from '../components/editor/suggestion/suggestion-box.component';
-import { ListMessagesComponent } from '../components/message/postbox/list/list-messages.component';
+import { NewForumComponent } from '../components/forum/new/new-forum.component';
+import { ManageForumPage } from '../pages/admin/panel/manage-forum/manage-forum.component';
+import { NewForumPage } from '../pages/admin/panel/new-forum/new-forum.component';
+import { ManageForumComponent } from '../components/forum/manage/manage-forum.component';
 
 // Settings
 import { RouteSetting } from './routes';
@@ -67,7 +74,9 @@ import { AuthHelper } from 'imports/util/auth/auth-helper';
     ChipsModule,
     FileUploadModule,
     GrowlModule,
-    AutoCompleteModule
+    AutoCompleteModule,
+    CheckboxModule,
+    RadioButtonModule
   ],
   declarations: [
     AppComponent,
@@ -93,9 +102,14 @@ import { AuthHelper } from 'imports/util/auth/auth-helper';
     NewMessageComponent,
     NewMessagePage,
     ListMessagesComponent,
-    NotifierComponent,
     ViewEditorComponent,
-    SuggestionBoxComponent
+    SuggestionBoxComponent,
+    ViewManagePanelPage,
+    NewForumComponent,
+    NotifierComponent,
+    ManageForumComponent,
+    ManageForumPage,
+    NewForumPage
   ],
   bootstrap: [
     AppComponent

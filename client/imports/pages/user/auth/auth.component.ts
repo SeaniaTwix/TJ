@@ -30,6 +30,7 @@ export class AuthPage {
       });
 
       console.log('success');
+      this.router.navigateByUrl('/home');
     }).catch((error) => {
       console.error(error);
     });
@@ -40,6 +41,7 @@ export class AuthPage {
 
     if (user) {
       console.log('success:', user);
+      this.router.navigateByUrl('/auth/login');
     }
   }
 }

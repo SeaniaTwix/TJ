@@ -1,0 +1,29 @@
+<div class="ui-g">
+  <div class="ui-g">
+    <div class="ui-g-12">
+      <h2>기본 설정</h2>
+    </div>
+    <div class="ui-g-12">
+      <input [(ngModel)]="subject" type="text" pInputText placeholder="포럼 이름">
+    </div>
+    <div class="ui-g-12">
+      <input [(ngModel)]="category" type="text" pInputText placeholder="카테고리">
+    </div>
+  </div>
+  <div class="ui-g">
+    <div class="ui-g-12">
+      <h2>세부 설정</h2>
+    </div>
+    <div class="ui-g-12">
+      <p-checkbox label="읽기" name="AccessLevel" value="read" [(ngModel)]="access"></p-checkbox>
+      <p-checkbox label="쓰기" name="AccessLevel" value="write" [(ngModel)]="access">쓰기</p-checkbox>
+    </div>
+    <div class="ui-g-12">
+      <p-radioButton label="유저" name="Criteria" value="user" [(ngModel)]="criteria"></p-radioButton>
+      <p-radioButton label="관리자" name="Criteria" value="admin" [(ngModel)]="criteria"></p-radioButton>
+    </div>
+  </div>
+
+</div>
+
+<button pButton type="button" (click)="makeNewForum()" label="새 포럼 만들기"></button>

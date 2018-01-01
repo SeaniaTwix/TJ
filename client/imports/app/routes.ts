@@ -1,3 +1,6 @@
+import { NewForumPage } from './../pages/admin/panel/new-forum/new-forum.component';
+import { ManageForumPage } from './../pages/admin/panel/manage-forum/manage-forum.component';
+import { ViewManagePanelPage } from './../pages/admin/panel/view/view-manage-panel.component';
 import { ViewMessagePage } from './../pages/user/message/view/view-message.component';
 import { PostboxPage } from 'client/imports/pages/user/postbox/postbox.component';
 
@@ -21,6 +24,11 @@ export let RouteSetting: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'forum/view/:forum_id',
+    redirectTo: '/forum/view/:forum_id/1',
+    pathMatch: 'full'
   },
   {
     path: 'forum/view/:forum_id/:page',
@@ -64,7 +72,21 @@ export let RouteSetting: Routes = [
   {
     path: 'user/postbox/view/:id',
     component: ViewMessagePage
-  }
+  },
+
+  // admin panel
+  {
+    path: 'admin/manage/',
+    component: ViewManagePanelPage
+  },
+  {
+    path: 'admin/forum/new',
+    component: NewForumPage
+  },
+  {
+    path: 'admin/forum/manage',
+    component: ManageForumPage
+  },
 
   // 404 Page
   {

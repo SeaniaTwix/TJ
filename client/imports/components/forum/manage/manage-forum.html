@@ -1,0 +1,7 @@
+<div class="ui-g">
+  <div class="ui-g-12" *ngFor="let forum of forumsCollection | async" >
+    <h3>
+      <a [routerLink]="['/forum/view/' + forum._id]">{{ forum.subject }}</a>
+    </h3>
+  </div>
+</div>
