@@ -1,4 +1,3 @@
-import { ListMessagesComponent } from './../components/message/postbox/list/list-messages.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -44,6 +43,9 @@ import { BubbleComponent } from './../components/message/bubble/bubble.component
 import { ViewPostboxComponent } from '../components/message/postbox/view/view-postbox.component';
 import { NewMessageComponent } from '../components/message/postbox/new/new-message.component';
 import { NotifierComponent } from '../components/notification/notifier/notifier.component';
+import { ViewEditorComponent } from '../components/editor/view/view-editor.component';
+import { SuggestionBoxComponent } from '../components/editor/suggestion/suggestion-box.component';
+import { ListMessagesComponent } from '../components/message/postbox/list/list-messages.component';
 
 // Settings
 import { RouteSetting } from './routes';
@@ -91,7 +93,9 @@ import { AuthHelper } from 'imports/util/auth/auth-helper';
     NewMessageComponent,
     NewMessagePage,
     ListMessagesComponent,
-    NotifierComponent
+    NotifierComponent,
+    ViewEditorComponent,
+    SuggestionBoxComponent
   ],
   bootstrap: [
     AppComponent

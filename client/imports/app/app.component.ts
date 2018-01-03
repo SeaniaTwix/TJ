@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: [
     'app.scss',
     '../../../../assets/primeng/resources/primeng.min.css',
-    '../../../../assets/primeng/resources/themes/rocket/theme.scss',
+    '../../../../assets/primeng/resources/themes/omega/theme.scss',
   ]
 })
 export class AppComponent {}
