@@ -5,9 +5,10 @@ import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 
 import { MeteorObservable } from 'meteor-rxjs';
+import { TokenWithStr } from 'typed-lexer/dist/typed-lexer';
 
 Meteor.methods({
-  'thread.new': (forum: Mongo.ObjectID, title: string, content: string, author: Mongo.ObjectID, tags: Array<string>) => {
+  'thread.new': (forum: Mongo.ObjectID, title: string, content: string, contentLexed: TokenWithStr<any>, author: Mongo.ObjectID, tags: Array<string>) => {
     // create a new post for root post to this thread.
 
     const _id = new Mongo.ObjectID();
@@ -20,6 +21,7 @@ Meteor.methods({
         _id: new Mongo.ObjectID(),
         title: title,
         content: content,
+        contentData: contentLexed,
         createdAt: new Date(),
         author: author,
         view: 0

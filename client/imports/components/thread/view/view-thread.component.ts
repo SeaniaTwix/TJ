@@ -13,6 +13,7 @@ import { Threads } from 'imports/collections/threads';
 import { Thread } from 'imports/models/thread';
 import { Subscriber } from 'rxjs/Subscriber';
 import { AuthHelper } from 'imports/util/auth/auth-helper';
+import { ForumLexer } from 'imports/lib/syntax/lexer';
 
 @Component({
   selector: 'view-thread',
@@ -25,7 +26,7 @@ export class ViewThreadComponent implements OnDestroy {
   private on_page: string;
 
   // internal values
-  private threadSubscription: Subscription;
+  public threadSubscription//: Subscription;
   protected threadResult: ObservableCursor<Thread>;
   protected content: string = '';
 
@@ -33,15 +34,21 @@ export class ViewThreadComponent implements OnDestroy {
   
   onForum: Mongo.ObjectID;
 
+  thread;
+
   constructor(private route: ActivatedRoute) {
     this.thread_id = this.route.snapshot.paramMap.get('topic_id');
-    
+    this.thread = null;
+
     this.threadSubscription = MeteorObservable.subscribe('db.threads').subscribe(() => {
       this.threadResult = Threads.find({ _id: new Mongo.ObjectID(this.thread_id) });
       this.threadResult.forEach((elem: any) => {
         this.threadTitle = elem.root.title;
         this.onForum = elem.master;
+        this.thread = elem;
       });
+
+      
     });
   }
 
@@ -53,8 +60,11 @@ export class ViewThreadComponent implements OnDestroy {
 
     const thread = new Mongo.ObjectID(this.thread_id);
 
+    let lexer = new ForumLexer()
+    let lexed = lexer.getLexerFor(this.content).readAllWithStr();
+
     // thread: Mongo.ObjectID, title: string, content: string, author: Mongo.ObjectID
-    Meteor.call('post.new', thread, 'RE: ' + this.threadTitle, this.content, accountState.uid, (err, res) => {
+    Meteor.call('post.new', thread, 'RE: ' + this.threadTitle, this.content, lexed, accountState.uid, (err, res) => {
       if (err !== undefined) {
         console.log(err);
       }

@@ -5,9 +5,10 @@ import { User } from 'imports/models/user';
 
 import * as hat from 'hat/index.js';
 import { Threads } from 'imports/collections/threads';
+import { TokenWithStr } from 'typed-lexer/dist/typed-lexer';
 
 Meteor.methods({
-  'post.new': (thread: Mongo.ObjectID, title: string, content: string, author: Mongo.ObjectID) => {
+  'post.new': (thread: Mongo.ObjectID, title: string, content: string, contentData: TokenWithStr<any>, author: Mongo.ObjectID) => {
     Threads.update({
       '_id': thread
     }, {
@@ -16,6 +17,7 @@ Meteor.methods({
           '_id': new Mongo.ObjectID(),
           'title': title,
           'content': content,
+          'contentData': contentData,
           'createdAt': new Date(),
           'author': author
         }
